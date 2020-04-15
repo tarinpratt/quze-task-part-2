@@ -1,0 +1,144 @@
+* {
+  text-align: center;
+  padding: 5px;
+  background-color: #0B0C10;
+  line-height: 1.5em;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  font-family: 'Comfortaa', cursive;
+  color: #66FCF1;
+  letter-spacing: 3px;
+  margin: 0px;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  color: #C5C6C7;
+  margin: 0;
+  text-align: left;
+}
+
+label {
+  padding-bottom: 10px;
+  font-size: 25px;
+  display: block;
+  color: #45A29E;
+  font-weight: bolder;
+  max-width: 200px;
+  margin: auto;
+}
+
+.responsive {
+  border-radius: 5px;
+  width: 100%;
+  max-width: 175px;
+  height: auto;
+  box-shadow: 0px 0px 7px 0px rgba(101, 124, 126, 0.75);
+}
+
+li {
+  list-style-type: none;
+}
+
+select {
+  background-color: #C5C6C7;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+.searchTitleSelect {
+  margin: auto;
+  display: block;
+  max-width: 200px;
+}
+
+option {
+  font-weight: bolder;
+}
+
+a.backLink{
+  margin-left: 0px;
+  margin-right: 0px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+}
+
+a.backLink:hover {
+  cursor: pointer;
+  color: #45A29E;
+  font-weight: bolder;
+}
+
+a.goToLink{
+  margin-left: 0px;
+  margin-right: 0px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+}
+
+a.goToLink:hover {
+  cursor: pointer;
+  color: #45A29E;
+  font-weight: bolder;
+  border-bottom: white solid 2px;
+}
+
+.submitButton {
+  border: #45A29E 3px solid;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: bold;
+}
+
+.submitButton:hover {
+  cursor: pointer;
+  background-color: #45A29E;
+}
+
+.moreDetailsButton {
+  border: #45A29E 3px solid;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.moreDetailsButton:hover {
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  background-color: #45A29E;
+}
+
+.backButton {
+  margin-bottom: 20px;
+  display: block;
+  border: #45A29E 3px solid;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.backButton:hover {
+  cursor: pointer;
+  background-color: #45A29E;
+}
+
+.moreDetailsSection {
+  max-width: 830px;
+  margin: auto;
+}
+
+.arrow {
+  background-color: white;
+}
