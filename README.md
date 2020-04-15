@@ -1,3 +1,25 @@
+# **Quze Course Search** # 
+
+Quze Course Search is an application built for filtering and searching through a catalogue of courses. Quze Course Search utilizes Elasticsearch API to render search results to the user. The project in total took 5 hours to create. 
+
+## **Live Demo**
+
+[Live Demo](https://quze-task-part-2.pratttarin.now.sh/)
+
+![Quze Course Search screenshot](src/images/quzeCourseSearch.png)
+
+Quze Course Search provides the user an option to search by course title, category, or rating. Once the user searches within a given search type, results are filtered and rendered for the user. Once rendered, users have to option to select a course for more details.
+
+![Quze Course Search screenshot](src/images/quzeDetails.png)
+
+This detailed page provides the title of the course, a short description of the course, a link to the course website, as well as the level, type, rating, and category of the course.
+
+## **Built With**
+* Elasticsearch API
+* React
+* CSS
+* HTML
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

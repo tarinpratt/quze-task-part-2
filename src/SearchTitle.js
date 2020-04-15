@@ -22,8 +22,7 @@ class SearchTitle extends Component {
     
       handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state.searchedTitle)
-        const url = 'http://staging-api.quze.co/search/intern-test/_search';
+        const url = 'https://staging-api.quze.co/search/intern-test/_search';
         const data = {query:{match:{title: this.state.searchedTitle}}};
         fetch(url, {
             method: 'POST',

@@ -23,8 +23,7 @@ class SearchCategory extends Component {
 
       handleSubmit = event => {
           event.preventDefault();
-          console.log(this.state.searchedCategories)
-          const url = 'http://staging-api.quze.co/search/intern-test/_search';
+          const url = 'https://staging-api.quze.co/search/intern-test/_search';
           const data = {query:{match:{quzeCategory: this.state.searchedCategories}}};
           fetch(url, {
               method: 'POST',
@@ -37,7 +36,6 @@ class SearchCategory extends Component {
       }
 
       render() {
-          console.log("STATE", this.state.searchedCategories)
 //search select for categories
         const list = store.catalogues.map((i, index, arr) => {
           return i.quzeCategory;

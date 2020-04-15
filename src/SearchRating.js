@@ -23,8 +23,7 @@ class SearchRating extends Component {
 
       handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state.searchedRatings)
-        const url = 'http://staging-api.quze.co/search/intern-test/_search';
+        const url = 'https://staging-api.quze.co/search/intern-test/_search';
         const data = {query:{match:{providerRatings: this.state.searchedRatings}}};
         fetch(url, {
             method: 'POST',

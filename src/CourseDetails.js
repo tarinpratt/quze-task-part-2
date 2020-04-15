@@ -12,7 +12,7 @@ class CourseDetails extends Component {
     }   
     componentDidMount() {
         const selectedId = this.props.match.params.courseId
-        const url = 'http://staging-api.quze.co/search/intern-test/_search';
+        const url = 'https://staging-api.quze.co/search/intern-test/_search';
         const data = {query:{match:{courseId: selectedId}}};
         fetch(url, {
             method: 'POST',
