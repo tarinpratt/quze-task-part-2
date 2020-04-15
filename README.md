@@ -1,6 +1,6 @@
 # **Quze Course Search** # 
 
-Quze Course Search is an application built for filtering and searching through a catalogue of courses. Quze Course Search utilizes Elasticsearch API to render search results to the user. The project in total took 5 hours to create. 
+Quze Course Search is an application built for filtering and searching through a catalogue of courses. Quze Course Search utilizes Elasticsearch API to render search results to the user. The project in total took 7 hours to create. 
 
 ## **Live Demo**
 
