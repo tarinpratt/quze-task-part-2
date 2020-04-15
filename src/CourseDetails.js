@@ -23,7 +23,6 @@ class CourseDetails extends Component {
             result: response.hits.hits
         }) ); 
     }
-
     render() {
         const results = this.state.result.map((i) => {
             return i._source;

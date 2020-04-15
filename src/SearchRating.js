@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import store from './store';
 
-
 class SearchRating extends Component {
     constructor(props) {
         super(props);
@@ -25,16 +24,21 @@ class SearchRating extends Component {
         event.preventDefault();
         const url = 'https://staging-api.quze.co/search/intern-test/_search';
         const data = {query:{match:{providerRatings: this.state.searchedRatings}}};
+        if(this.state.searchedRatings === "") {
+            alert('You must select a Rating');
+        } else {
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json'}
-        }).then(res => res.json())
+        }).then(res => 
+            (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json())
         .then(response => this.setState ({
             result: response.hits.hits
         }) ); 
-    }
-
+    }}
       render() {
 //search select for ratings
         const ratingList = store.catalogues.map((i, index, arr) => {
@@ -43,8 +47,9 @@ class SearchRating extends Component {
         const reducedRating = ratingList.reduce((unique, item) => {
           return unique.includes(item) ? unique : [...unique, item]
         }, []);
-        const ratingsSorted = reducedRating.sort();       
-        //access results from api
+        const ratingsSorted = reducedRating.sort();
+        ratingsSorted.pop();       
+//access results from api
         const results = this.state.result.map((i) => {
             return i._source;
           })
@@ -72,6 +77,7 @@ class SearchRating extends Component {
           <h2>Ratings</h2>
           <form onSubmit={this.handleSubmit}>
           <select value={this.state.searchedRatings} onChange={this.searchRatings}>
+          <option value="none">Select a Rating</option>
           {ratingsSorted.map((rating, index) => {
            return (
              <option key={index} value={rating}> {rating} </option>

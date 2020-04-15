@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import store from './store';
 
-
 class SearchCategory extends Component {
     constructor(props) {
         super(props);
@@ -25,17 +24,23 @@ class SearchCategory extends Component {
           event.preventDefault();
           const url = 'https://staging-api.quze.co/search/intern-test/_search';
           const data = {query:{match:{quzeCategory: this.state.searchedCategories}}};
-          fetch(url, {
-              method: 'POST',
-              body: JSON.stringify(data),
-              headers: { 'Content-Type': 'application/json'}
-          }).then(res => res.json())
-          .then(response => this.setState ({
-              result: response.hits.hits
-          }) ); 
+          if(this.state.searchedCategories === "") {
+              alert('You must select a category')
+          } else {
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json'}
+            }).then(res =>             
+                (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json())
+            .then(response => this.setState ({
+                result: response.hits.hits
+            })); 
+          }
       }
-
-      render() {
+      render() {    
 //search select for categories
         const list = store.catalogues.map((i, index, arr) => {
           return i.quzeCategory;
@@ -44,6 +49,7 @@ class SearchCategory extends Component {
           return unique.includes(item) ? unique : [...unique, item]
         }, []);
         const categoriesSorted = reduced.sort();
+        categoriesSorted.pop();
 //access results from api
         const results = this.state.result.map((i) => {
             return i._source;
@@ -72,9 +78,10 @@ class SearchCategory extends Component {
           <h2>Categories</h2>
           <form onSubmit={this.handleSubmit}>
           <select className="searchTitleSelect" value={this.state.searchedCategories} onChange={this.searchCategories}>
+          <option value="none">Select a Category</option>
           {categoriesSorted.map((category, index) => {
            return (
-             <option key={index} value={category}> {category} </option>
+            <option key={index} value={category}> {category} </option>
             )
             })}
           </select>

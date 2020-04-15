@@ -12,6 +12,7 @@ class SearchSelect extends Component {
     }   
       onSelect = e => {
         this.setState({ selectedSearchOption: e.target.value})};
+        
     render() {
         const searchOptions = ['Title', 'Category', 'Rating'];  
     return(

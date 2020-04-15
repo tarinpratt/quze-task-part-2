@@ -24,17 +24,25 @@ class SearchTitle extends Component {
         event.preventDefault();
         const url = 'https://staging-api.quze.co/search/intern-test/_search';
         const data = {query:{match:{title: this.state.searchedTitle}}};
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json'}
-        }).then(res => res.json())
-        .then(response => this.setState ({
-            result: response.hits.hits
-        }) ); 
+        if(this.state.searchedTitle === "") {
+            alert('You must select a title')
+        } else {
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json'}
+            })
+            .then(res => 
+                (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json())
+            .then(response => this.setState ({
+                result: response.hits.hits
+            })); 
+        }
     }
       render() {
-        //sort the search title options
+//sort the search title options
         const titleList = store.catalogues.map((i, index, arr) => {
             return i.title;
           })
@@ -42,8 +50,7 @@ class SearchTitle extends Component {
         return unique.includes(item) ? unique : [...unique, item]
         }, []);
         const titlesSorted = reducedTitle.sort();
-
-        //access results from api
+//access results from api
         const results = this.state.result.map((i) => {
           return i._source;
         })
@@ -71,9 +78,10 @@ class SearchTitle extends Component {
             <h2>Titles</h2>
             <form onSubmit={this.handleSubmit}>
               <select className="searchTitleSelect" value={this.state.searchedTitle} onChange={this.searchTitle}>
+              <option value="none">Select a Title</option>
               {titlesSorted.map((title, index) => {
                return (
-                 <option key={index} value={title}> {title} </option>
+               <option key={index} value={title}> {title} </option>
                )
                })}
               </select>
@@ -81,7 +89,6 @@ class SearchTitle extends Component {
               </form>
             <section className="searchResults">{resultList}</section>
             </div>
-    
         )
       }
     }
